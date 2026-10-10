@@ -16,3 +16,7 @@ nav:
   - Guides:
       - Model and validation reference: guides/model-reference.md
       - Erasure strategies: guides/erasure.md
+  - Releases:
+      - releases/index.md
+      - v0.1.0: releases/v0.1.0.md
+      - Changelog: releases/changelog.md
