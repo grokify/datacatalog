@@ -78,15 +78,15 @@ type Field struct {
 	Type        Type       `json:"type,omitempty" jsonschema:"enum=string,enum=number,enum=bool,enum=time,enum=json,enum=bytes"`
 	Visibility  Visibility `json:"visibility" jsonschema:"enum=public,enum=internal" jsonschema_description:"Explicit audience classification; there is no default."`
 	// PII marks personal data about the data subject.
-	PII bool `json:"pii,omitempty"`
+	PII bool `json:"pii,omitempty" jsonschema_description:"PII marks personal data about the data subject."`
 	// Secret marks credentials and key material; it implies internal visibility.
-	Secret bool `json:"secret,omitempty"`
+	Secret bool `json:"secret,omitempty" jsonschema_description:"Secret marks credentials and key material; it implies internal visibility."`
 	// Erasure is the strategy applied when the data subject is erased.
-	Erasure Erasure `json:"erasure,omitempty" jsonschema:"enum=clear,enum=tombstone,enum=hash,enum=delete_row,enum=shred,enum=retain"`
+	Erasure Erasure `json:"erasure,omitempty" jsonschema:"enum=clear,enum=tombstone,enum=hash,enum=delete_row,enum=shred,enum=retain" jsonschema_description:"Erasure is the strategy applied when the data subject is erased."`
 	// RetainReason is required when Erasure is "retain".
-	RetainReason string `json:"retain_reason,omitempty"`
+	RetainReason string `json:"retain_reason,omitempty" jsonschema_description:"RetainReason is required when Erasure is 'retain'."`
 	// Export includes the field in data-subject access exports.
-	Export bool `json:"export,omitempty"`
+	Export bool `json:"export,omitempty" jsonschema_description:"Export includes the field in data-subject access exports."`
 }
 
 // Entity describes one stored record type (a table, collection or document
@@ -96,17 +96,17 @@ type Entity struct {
 	Owner       string `json:"owner,omitempty" jsonschema_description:"Team or component responsible for the entity."`
 	Description string `json:"description,omitempty"`
 	// SubjectKey names the field that identifies the data subject.
-	SubjectKey string `json:"subject_key,omitempty"`
+	SubjectKey string `json:"subject_key,omitempty" jsonschema_description:"SubjectKey names the field that identifies the data subject."`
 	// PrivacyScope marks the entity as subject to access and erasure requests.
-	PrivacyScope bool `json:"privacy_scope,omitempty"`
+	PrivacyScope bool `json:"privacy_scope,omitempty" jsonschema_description:"PrivacyScope marks the entity as subject to access and erasure requests."`
 	// HoldApplicable marks the entity as subject to legal holds. It is an
 	// entity-level property: holds suspend erasure for whole rows.
-	HoldApplicable bool `json:"hold_applicable,omitempty"`
+	HoldApplicable bool `json:"hold_applicable,omitempty" jsonschema_description:"HoldApplicable marks the entity as subject to legal holds. It is an entity-level property: holds suspend erasure for whole rows."`
 	// Versioned marks the entity as keeping row history. It is an
 	// entity-level property: history rows must be erased with their subject.
-	Versioned bool `json:"versioned,omitempty"`
+	Versioned bool `json:"versioned,omitempty" jsonschema_description:"Versioned marks the entity as keeping row history. It is an entity-level property: history rows must be erased with their subject."`
 	// Retention is a free-text retention note.
-	Retention string  `json:"retention,omitempty"`
+	Retention string  `json:"retention,omitempty" jsonschema_description:"Retention is a free-text retention note."`
 	Fields    []Field `json:"fields,omitempty"`
 }
 

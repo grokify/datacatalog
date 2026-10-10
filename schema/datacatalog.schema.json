@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/grokify/datacatalog/schema/datacatalog.schema.json",
+  "$ref": "#/$defs/Catalog",
+  "$defs": {
+    "Catalog": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Catalog name, typically the application or service."
+        },
+        "entities": {
+          "items": {
+            "$ref": "#/$defs/Entity"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "name"
+      ]
+    },
+    "Entity": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Entity name; unique within the catalog."
+        },
+        "owner": {
+          "type": "string",
+          "description": "Team or component responsible for the entity."
+        },
+        "description": {
+          "type": "string"
+        },
+        "subject_key": {
+          "type": "string",
+          "description": "SubjectKey names the field that identifies the data subject."
+        },
+        "privacy_scope": {
+          "type": "boolean",
+          "description": "PrivacyScope marks the entity as subject to access and erasure requests."
+        },
+        "hold_applicable": {
+          "type": "boolean",
+          "description": "HoldApplicable marks the entity as subject to legal holds. It is an entity-level property: holds suspend erasure for whole rows."
+        },
+        "versioned": {
+          "type": "boolean",
+          "description": "Versioned marks the entity as keeping row history. It is an entity-level property: history rows must be erased with their subject."
+        },
+        "retention": {
+          "type": "string",
+          "description": "Retention is a free-text retention note."
+        },
+        "fields": {
+          "items": {
+            "$ref": "#/$defs/Field"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "name"
+      ]
+    },
+    "Field": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Field (column) name; unique within the entity."
+        },
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "string",
+            "number",
+            "bool",
+            "time",
+            "json",
+            "bytes"
+          ]
+        },
+        "visibility": {
+          "type": "string",
+          "enum": [
+            "public",
+            "internal"
+          ],
+          "description": "Explicit audience classification; there is no default."
+        },
+        "pii": {
+          "type": "boolean",
+          "description": "PII marks personal data about the data subject."
+        },
+        "secret": {
+          "type": "boolean",
+          "description": "Secret marks credentials and key material; it implies internal visibility."
+        },
+        "erasure": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "tombstone",
+            "hash",
+            "delete_row",
+            "shred",
+            "retain"
+          ],
+          "description": "Erasure is the strategy applied when the data subject is erased."
+        },
+        "retain_reason": {
+          "type": "string",
+          "description": "RetainReason is required when Erasure is 'retain'."
+        },
+        "export": {
+          "type": "boolean",
+          "description": "Export includes the field in data-subject access exports."
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "name",
+        "visibility"
+      ]
+    }
+  },
+  "title": "Data Catalog",
+  "description": "Entities and fields an application stores, and how each is classified."
+}
