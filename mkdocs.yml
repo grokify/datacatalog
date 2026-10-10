@@ -1,0 +1,18 @@
+site_name: DataCatalog
+site_description: Dependency-free data catalog model for Go
+site_url: https://grokify.github.io/datacatalog/
+repo_url: https://github.com/grokify/datacatalog
+repo_name: grokify/datacatalog
+
+theme:
+  name: material
+
+markdown_extensions:
+  - tables
+  - admonition
+
+nav:
+  - Home: index.md
+  - Guides:
+      - Model and validation reference: guides/model-reference.md
+      - Erasure strategies: guides/erasure.md
