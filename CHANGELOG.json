@@ -1,0 +1,48 @@
+{
+  "irVersion": "1.0",
+  "project": "datacatalog",
+  "repository": "https://github.com/grokify/datacatalog",
+  "versioning": "semver",
+  "commitConvention": "conventional",
+  "maintainers": [
+    "grokify"
+  ],
+  "releases": [
+    {
+      "version": "v0.1.0",
+      "date": "2026-10-10",
+      "commit": "4865e98",
+      "highlights": [
+        {
+          "description": "A dependency-free Go model for describing which entities and fields an application stores and how each is classified, with validation and a query-guard predicate"
+        }
+      ],
+      "added": [
+        {
+          "description": "Catalog, entity and field model: visibility (`public` or `internal`), independent `pii` and `secret` tags, erasure strategy, export flag, subject key, privacy scope, hold applicability, versioning and retention note",
+          "commit": "cacd103"
+        },
+        {
+          "description": "`Validate` reports every problem at once, with rule identifiers: explicit visibility, `secret` implies `internal`, subject key required and known, erasure required for personal data in privacy scope, retain reason required, unique names",
+          "commit": "41993e1"
+        },
+        {
+          "description": "Audience filtering (`VisibleTo`, `VisibleFields`) and default-deny query predicates (`AllowedInQuery`) that always block internal and secret fields and block personal data unless allowed",
+          "commit": "48c2845"
+        },
+        {
+          "description": "JSON load and save with stable ordering, `Merge` that reports conflicting entity definitions, and a Markdown renderer for documentation",
+          "commit": "7e9e63d"
+        },
+        {
+          "description": "JSON Schema generated from the Go types and embedded, with a test that fails when the committed schema drifts",
+          "commit": "2aa1cb3"
+        },
+        {
+          "description": "Guides: model and validation reference, and erasure strategies",
+          "commit": "4865e98"
+        }
+      ]
+    }
+  ]
+}
