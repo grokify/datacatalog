@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://grokify.github.io/datacatalog/</loc>
+         <lastmod>2026-10-11</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/datacatalog/guides/erasure/</loc>
+         <lastmod>2026-10-11</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/datacatalog/guides/model-reference/</loc>
+         <lastmod>2026-10-11</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/datacatalog/releases/</loc>
+         <lastmod>2026-10-11</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/datacatalog/releases/changelog/</loc>
+         <lastmod>2026-10-11</lastmod>
+    </url>
+    <url>
+         <loc>https://grokify.github.io/datacatalog/releases/v0.1.0/</loc>
+         <lastmod>2026-10-11</lastmod>
+    </url>
+</urlset>
