@@ -38,7 +38,10 @@ func TestEmbeddedSchemaIsCurrent(t *testing.T) {
 	if err := cmd.Run(); err != nil {
 		t.Fatalf("go run gen.go: %v\n%s", err, stderr.String())
 	}
-	if !bytes.Equal(out.Bytes(), schema.JSON) {
+	// A checkout with autocrlf converts the committed file to CRLF while the
+	// generator always writes LF; compare content, not line endings.
+	want := bytes.ReplaceAll(schema.JSON, []byte("\r\n"), []byte("\n"))
+	if !bytes.Equal(out.Bytes(), want) {
 		t.Fatal("datacatalog.schema.json is stale; run `go generate ./schema`")
 	}
 }
